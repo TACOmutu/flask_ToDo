@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+    {% block content %}
+        <h1>一覧</h1>
+        <form method="post" action="/">
+            <h2>タスクを追加</h2>
+            <input type="text" name="title">
+            <input type="submit" value="追加">
+        </form>
+
+
+        <ul>
+            {% for task in tasks %}
+            <li>{{ task }}</li>
+                <!--<li>
+                    {% if task.is_done %}
+                        <p>{{ task.title }}</p>
+                    {% else %}
+                        {{ task.title }}
+                    {% endif %}
+                </li>
+            -->
+            {% endfor %}
+        </ul>
+    {% endblock %}
