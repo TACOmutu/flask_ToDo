@@ -1,7 +1,7 @@
 {% extends "base.html" %}
     {% block content %}
         <h1>一覧</h1>
-        <form method="post" action="/">
+        <form method="post" action="/add">
             <h2>タスクを追加</h2>
             <input type="text" name="title">
             <input type="submit" value="追加">
@@ -10,15 +10,16 @@
 
         <ul>
             {% for task in tasks %}
-            <li>{{ task }}</li>
-                <!--<li>
+                <li>
                     {% if task.is_done %}
-                        <p>{{ task.title }}</p>
+                        <s>{{ task.title }}</s>
                     {% else %}
                         {{ task.title }}
                     {% endif %}
+                    <form method="post" action="/toggle/{{ task.id }}" style="display:inline;">
+                        <input type="submit" value="{% if task.is_done %}未完了{% else %}完了{% endif %}">
+                    </form>
                 </li>
-            -->
             {% endfor %}
         </ul>
     {% endblock %}
