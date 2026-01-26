@@ -44,6 +44,14 @@ def toggle(task_id):
     return redirect(url_for('index'))
 
 
+#削除
+@app.route('/delete/<int:task_id>', methods=['POST'])
+def delete(task_id):
+    task = Tasks_db.query.get(task_id)
+    db.session.delete(task)
+    db.session.commit()
+    return redirect(url_for('index'))
+
 
 if __name__ == '__main__':
     with app.app_context():
