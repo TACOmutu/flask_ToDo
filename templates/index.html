@@ -16,10 +16,35 @@
                     {% else %}
                         {{ task.title }}
                     {% endif %}
-                    <form method="post" action="/toggle/{{ task.id }}" style="display:inline;">
-                        <input type="submit" value="{% if task.is_done %}未完了{% else %}完了{% endif %}">
+                    <!--
+                    チェックボタン
+                    <form method="post" 
+                          action="/toggle/{{ task.id }}"
+                        style="display:inline;">
+                        <input type="submit" 
+                               value="{% if task.is_done %}未完了{% else %}完了{% endif %}">
+                    </form>
+                    -->
+                    <!--削除ボタン
+                    <form method="post"
+                          action="/delete/{{ task.id }}" 
+                          style="display:inline;">
+                    <button type="submit">削除</button>
+                    </form>
+                    -->
+                    <!--削除ボタン（確認ダイアログ付き）-->
+                    <form method="post"
+                          action="/delete/{{ task.id }}" 
+                          style="display:inline;"
+                          onsubmit="return deletecheck('{{ task.title }}');"> <!--Trueなら削除命令送信　Falseなら送信しない-->
+                        <button type="submit">削除</button>
                     </form>
                 </li>
             {% endfor %}
         </ul>
+        <script>
+            function deletecheck(title){
+                return confirm(`「${title}」を削除します。よろしいですか？`);
+            }
+        </script>
     {% endblock %}
