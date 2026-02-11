@@ -7,31 +7,35 @@
             <input type="submit" value="追加">
         </form>
 
+        <br>
 
+        <form id="bulk-delete-form"
+              method="post" action="{{ url_for('bulk_delete')}}"
+              onsubmit="return confirm('完了済みのタスクを削除します。よろしいですか？')">
+              <button type="submit">完了済みタスク一括削除</button>
+        </form>
         <ul>
             {% for task in tasks %}
                 <li>
+                    <input type="checkbox"
+                        name="task_ids"
+                        value="{{ task.id }}"
+                        form="bulk-delete-form"
+                        {% if task.is_done %}checked{% endif %}>
+
                     {% if task.is_done %}
                         <s>{{ task.title }}</s>
                     {% else %}
                         {{ task.title }}
                     {% endif %}
-                    <!--
-                    チェックボタン
+
+                    <!--チェックボタン-->
                     <form method="post" 
                           action="/toggle/{{ task.id }}"
                         style="display:inline;">
                         <input type="submit" 
                                value="{% if task.is_done %}未完了{% else %}完了{% endif %}">
                     </form>
-                    -->
-                    <!--削除ボタン
-                    <form method="post"
-                          action="/delete/{{ task.id }}" 
-                          style="display:inline;">
-                    <button type="submit">削除</button>
-                    </form>
-                    -->
                     <!--削除ボタン（確認ダイアログ付き）-->
                     <form method="post"
                           action="/delete/{{ task.id }}" 
@@ -41,7 +45,9 @@
                     </form>
                 </li>
             {% endfor %}
+            
         </ul>
+
         <script>
             function deletecheck(title){
                 return confirm(`「${title}」を削除します。よろしいですか？`);
