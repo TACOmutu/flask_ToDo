@@ -4,7 +4,7 @@
         <form method="post" action="/add">
             <h2>タスクを追加</h2>
             <input type="text" name="title">
-            <input type="submit" value="追加">
+            <input type="submit" value="追加" class="add-btn">
         </form>
 
         <br>
@@ -16,33 +16,33 @@
         </form>
         <ul>
             {% for task in tasks %}
-                <li>
-                    <input type="checkbox"
-                        name="task_ids"
-                        value="{{ task.id }}"
-                        form="bulk-delete-form"
-                        {% if task.is_done %}checked{% endif %}>
-
-                    {% if task.is_done %}
-                        <s>{{ task.title }}</s>
-                    {% else %}
-                        {{ task.title }}
-                    {% endif %}
-
-                    <!--チェックボタン-->
-                    <form method="post" 
-                          action="/toggle/{{ task.id }}"
-                        style="display:inline;">
-                        <input type="submit" 
-                               value="{% if task.is_done %}未完了{% else %}完了{% endif %}">
-                    </form>
-                    <!--削除ボタン（確認ダイアログ付き）-->
-                    <form method="post"
-                          action="/delete/{{ task.id }}" 
-                          style="display:inline;"
-                          onsubmit="return deletecheck('{{ task.title }}');"> <!--Trueなら削除命令送信　Falseなら送信しない-->
-                        <button type="submit">削除</button>
-                    </form>
+                <li class="task-item">
+                    <span class="task-title">
+                        {% if task.is_done %}
+                            <s>{{ task.title }}</s>
+                        {% else %}
+                            {{ task.title }}
+                        {% endif %}
+                    </span>
+                    <!--完了/未完了-->
+                    <div class="task-buttons">
+                        <form method="post" action="/toggle/{{ task.id }}">
+                        <button type="submit">
+                            {% if task.is_done %}未完了{% else %}完了{% endif %}
+                        </button>
+                        </form>
+                        <!--削除ボタン（確認ダイアログ付き）-->
+                        <form method="post"
+                            action="/delete/{{ task.id }}" 
+                            style="display:inline;"
+                            onsubmit="return deletecheck('{{ task.title }}');"> <!--Trueなら削除命令送信　Falseなら送信しない-->
+                            <button type="submit" class="btn-delete">削除</button>
+                        </form>
+                        <!--編集ボタン-->
+                        <form method="get" action="/edit/{{ task.id}}" style="display: inline;">
+                            <button type="submit"  class="btn-edit">編集</button>
+                        </form>
+                    </div>
                 </li>
             {% endfor %}
             
