@@ -2,12 +2,14 @@
 <html lang="ja">
     <head>
         <meta charset="utf-8">
-        <title>Flask - paiza</title>
-        <style>body {padding: 10px;}</style>
+        <title>Flask - ToDo</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     </head>
     <body>
-        <h1>共通部分</h1>
-        {% block content %}
-        {% endblock %}
+        <div class="container">
+            <h1 class="app-title">ToDo アプリ</h1>
+            {% block content %}
+            {% endblock %}
+        </div>
     </body>
 </html>
