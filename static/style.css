@@ -1,0 +1,160 @@
+/* =====================
+   全体
+===================== */
+body {
+    font-family: "Segoe UI", sans-serif;
+    background: #f4f6f9;
+    margin: 0;
+    padding: 40px 20px;
+}
+
+/* 中央カード */
+.container {
+    max-width: 650px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 14px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* タイトル */
+.app-title {
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 600;
+}
+
+/* =====================
+   入力フォーム
+===================== */
+form {
+    margin-bottom: 15px;
+}
+
+input[type="text"] {
+    width: 70%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+/* =====================
+   ボタン共通
+===================== */
+button {
+    padding: 6px 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.2s;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 32px;
+}
+
+/* 追加ボタン（そのまま） */
+.add-btn {
+    background: #4CAF50;
+    color: white;
+}
+
+.add-btn:hover {
+    background: #43a047;
+}
+
+/* 一括削除（そのまま） */
+#bulk-delete-form button {
+    background: #ff9800;
+    color: white;
+}
+
+#bulk-delete-form button:hover {
+    background: #f57c00;
+}
+
+/* =====================
+   タスクリスト
+===================== */
+ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+}
+
+/* タスク1件 */
+.task-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: #fafafa;
+    border: 1px solid #eee;
+    padding: 12px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+    transition: 0.2s;
+}
+
+.task-item:hover {
+    background: #f1f3f5;
+}
+
+/* タイトル */
+.task-title {
+    font-size: 18px;
+    font-weight: 500;
+    flex-grow: 1;
+    line-height: 1.4;
+}
+
+/* 打ち消し線 */
+.task-title s {
+    color: #888;
+}
+
+/* ボタン群 */
+.task-buttons {
+    display: flex;
+    gap: 6px;
+}
+
+.task-buttons form {
+    margin: 0;
+}
+
+/* =====================
+   個別ボタン色（←ここだけ変更）
+===================== */
+
+/* 完了 */
+.btn-toggle {
+    background: #3498db;
+    color: white;
+}
+
+.btn-toggle:hover {
+    background: #2980b9;
+}
+
+/* 削除 */
+.btn-delete {
+    background: #e74c3c;
+    color: white;
+}
+
+.btn-delete:hover {
+    background: #c0392b;
+}
+
+/* 編集（青に統一） */
+.btn-edit {
+    background: #3498db;
+    color: white;
+}
+
+.btn-edit:hover {
+    background: #2980b9;
+}
